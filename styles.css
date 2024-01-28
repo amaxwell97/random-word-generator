@@ -24,6 +24,11 @@
     margin-bottom: 15px;
 }
 
+.container hr {
+    border-top: .5px solid #F9EFDB;
+    margin: 0 auto 10px;
+}
+
 .details {
     display: flex;
     flex-flow: column;
