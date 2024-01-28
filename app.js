@@ -6,3 +6,17 @@ const todaysWordDisplay = document.querySelector('.container h2');
 const todaysWordDfnDisplay = document.querySelector('#definition');
 const todaysWordSentenceDisplay = document.querySelector('#sentence');
 
+const today = new Date();
+const dd = today.getDay();
+const month = today.toLocaleString('default', {month: 'long'});
+const yyyy = today.getFullYear();
+const todaysDate = `${month} ${dd}, ${yyyy}`;
+
+const updateDate = () => {
+    return todaysDateTitle.innerHTML += todaysDate;
+}
+
+window.addEventListener('load', () => {
+    updateDate();
+})
+
