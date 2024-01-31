@@ -28,15 +28,14 @@ const randomWordOptions = {
     }
 };
 
-async function getRandomWord() {
+const getRandomWord = async () => {
     const ninjaResponse = await fetch(apiNinjaUrl, randomWordOptions);
     const ninjaData = await ninjaResponse.json();
     console.log(ninjaData.word);
     return ninjaData.word;
 }
 
-async function getWordDfn() {
-    const randomWord = await getRandomWord();
+const getWordDfn = async (randomWord) => {
     const websterResponse = await fetch(`${dictionaryUrl}${randomWord}${dictionaryParam}${dictionaryApiKey}`);
     const websterData = await websterResponse.json();
     console.log(websterData);
