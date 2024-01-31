@@ -41,6 +41,10 @@ const getWordDfn = async (randomWord) => {
     console.log(websterData);
 }
 
+const updateHtml = () => {
+    
+}
+
 window.addEventListener('load', () => {
     updateDate();
     getWordDfn();
