@@ -36,4 +36,7 @@ async function getRandomWord() {
     // const endpoint = `${apiNinjaUrl}${randomWord}${param}${dictionaryApiKey}`;
     const response = await fetch(apiNinjaUrl, randomWordOptions);
     const data = await response.json();
+    todaysWordDisplay.innerHTML = data.word;
 }
+
+getRandomWord();
