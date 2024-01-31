@@ -32,8 +32,8 @@ const randomWordOptions = {
     }
 };
 
-async function getWordOfDay() {
-
-    const endpoint = `${url}${randomWord}${param}${dictionaryApiKey}`;
-
+async function getRandomWord() {
+    // const endpoint = `${apiNinjaUrl}${randomWord}${param}${dictionaryApiKey}`;
+    const response = await fetch(apiNinjaUrl, randomWordOptions);
+    const data = await response.json();
 }
