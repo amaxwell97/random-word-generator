@@ -21,10 +21,6 @@ const updateDate = () => {
     return todaysDateTitle.innerHTML += todaysDate;
 }
 
-window.addEventListener('load', () => {
-    updateDate();
-})
-
 const randomWordOptions = {
     method: 'GET',
     headers: {
@@ -33,10 +29,21 @@ const randomWordOptions = {
 };
 
 async function getRandomWord() {
-    // const endpoint = `${apiNinjaUrl}${randomWord}${param}${dictionaryApiKey}`;
-    const response = await fetch(apiNinjaUrl, randomWordOptions);
-    const data = await response.json();
-    todaysWordDisplay.innerHTML = data.word;
+    const ninjaResponse = await fetch(apiNinjaUrl, randomWordOptions);
+    const ninjaData = await ninjaResponse.json();
+    console.log(ninjaData.word);
+    return ninjaData.word;
 }
 
-getRandomWord();
+async function getWordDfn() {
+    const randomWord = await getRandomWord();
+    const websterResponse = await fetch(`${dictionaryUrl}${randomWord}${dictionaryParam}${dictionaryApiKey}`);
+    const websterData = await websterResponse.json();
+    console.log(websterData);
+}
+
+window.addEventListener('load', () => {
+    updateDate();
+    getWordDfn();
+})
+
