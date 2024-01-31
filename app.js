@@ -25,7 +25,12 @@ window.addEventListener('load', () => {
     updateDate();
 })
 
-
+const randomWordOptions = {
+    method: 'GET',
+    headers: {
+        'X-Api-Key': ninjaApiKey
+    }
+};
 
 async function getWordOfDay() {
 
