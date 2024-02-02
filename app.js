@@ -44,6 +44,9 @@ const getWordDfn = async () => {
     return [randomWord, websterData['0']['shortdef']['0']];
 }
 
+// Need to create getWordSentence async function to access an examplatory sentence
+// Update updateHtml afterwards to set todaysWordSentenceDisplay
+
 const updateHtml = async () => {
     const wordAndDefinition = await getWordDfn();
     todaysWordDisplay.innerText = wordAndDefinition[0];
