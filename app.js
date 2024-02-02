@@ -32,21 +32,27 @@ const getRandomWord = async () => {
     const ninjaResponse = await fetch(apiNinjaUrl, randomWordOptions);
     const ninjaData = await ninjaResponse.json();
     console.log(ninjaData.word);
-    return ninjaData.word;
+    return String(ninjaData.word);
 }
 
-const getWordDfn = async (randomWord) => {
+const getWordDfn = async () => {
+    const randomWord = await getRandomWord();
     const websterResponse = await fetch(`${dictionaryUrl}${randomWord}${dictionaryParam}${dictionaryApiKey}`);
     const websterData = await websterResponse.json();
     console.log(websterData);
+    console.log(websterData['0']['shortdef']['0']);
+    return [randomWord, websterData['0']['shortdef']['0']];
 }
 
-const updateHtml = () => {
-    
+const updateHtml = async () => {
+    const wordAndDefinition = await getWordDfn();
+    todaysWordDisplay.innerText = wordAndDefinition[0];
+    todaysWordDfnDisplay.innerText = wordAndDefinition[1];
 }
 
 window.addEventListener('load', () => {
     updateDate();
-    getWordDfn();
+    updateHtml();
+    // getWordDfn();
 })
 
