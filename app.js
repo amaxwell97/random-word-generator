@@ -44,11 +44,12 @@ const getWordDfn = async () => {
     return [randomWord, randomWordDfn];
 }
 
-// Need to create getWordSentence async function to access an examplatory sentence
-// Update updateHtml afterwards to set todaysWordSentenceDisplay
+// Cannot access a word's "suppl" key in dictionary.api to retrieve the an exmaple of the word
+// Need to update API calls to use dictionaryapi.dev
+// Give word defention and sentence padding in CSS and border-left
 
 const updateHtml = async () => {
-    const wordAndDefinition = await getWordDfnAndSentence();
+    const wordAndDefinition = await getWordDfn();
     todaysWordDisplay.innerText = wordAndDefinition[0];
     todaysWordDfnDisplay.innerText = wordAndDefinition[1];
 }
