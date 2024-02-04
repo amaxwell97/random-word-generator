@@ -40,15 +40,15 @@ const getWordDfn = async () => {
     const websterResponse = await fetch(`${dictionaryUrl}${randomWord}${dictionaryParam}${dictionaryApiKey}`);
     const websterData = await websterResponse.json();
     console.log(websterData);
-    console.log(websterData['0']['shortdef']['0']);
-    return [randomWord, websterData['0']['shortdef']['0']];
+    const randomWordDfn = websterData['0']['shortdef']['0'];
+    return [randomWord, randomWordDfn];
 }
 
 // Need to create getWordSentence async function to access an examplatory sentence
 // Update updateHtml afterwards to set todaysWordSentenceDisplay
 
 const updateHtml = async () => {
-    const wordAndDefinition = await getWordDfn();
+    const wordAndDefinition = await getWordDfnAndSentence();
     todaysWordDisplay.innerText = wordAndDefinition[0];
     todaysWordDfnDisplay.innerText = wordAndDefinition[1];
 }
